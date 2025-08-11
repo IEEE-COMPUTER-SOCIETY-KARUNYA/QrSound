@@ -3,22 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>QR Demo Dashboard</title>
-<style>
-body { font-family: sans-serif; margin:1rem; }
-table { width:100%; border-collapse: collapse; }
-th,td { border:1px solid #ccc; padding:4px; text-align:left; }
-#totals { margin-bottom:1rem; }
-</style>
+<title>IEEE Computer Society - Analytics Dashboard</title>
+<link rel="stylesheet" href="theme.css">
 <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
-<h1>Dashboard</h1>
-<div id="totals">Scans: <span id="scans">0</span> | Unique Devices: <span id="unique">0</span></div>
-<table id="events">
-  <thead><tr><th>Time</th><th>IP</th><th>User-Agent</th><th>Kind</th><th>Session</th></tr></thead>
-  <tbody></tbody>
-</table>
+<div class="container">
+  <!-- IEEE Branding Section -->
+  <div class="ieee-logo">
+    <img src="ieee-logo.png" alt="IEEE Computer Society Logo">
+    <div class="logo-text">IEEE Computer Society</div>
+    <div class="logo-subtitle">Engagement Analytics Dashboard</div>
+  </div>
+
+  <div class="card">
+    <h1>IEEE Student Engagement Dashboard</h1>
+    
+    <div class="stats-display">
+      <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 16px;">
+        <div>
+          <div style="color: var(--brand-text-dim); font-size: var(--fs-sm);">Total Visits</div>
+          <span id="scans">0</span>
+        </div>
+        <div>
+          <div style="color: var(--brand-text-dim); font-size: var(--fs-sm);">Unique Visitors</div>
+          <span id="unique">0</span>
+        </div>
+      </div>
+    </div>
+
+    <h3>Student Activity Log</h3>
+    <table id="events">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>IP Address</th>
+          <th>User Agent</th>
+          <th>Activity Type</th>
+          <th>Session ID</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
 <script>
 const scansEl=document.getElementById('scans');
 const uniqueEl=document.getElementById('unique');
